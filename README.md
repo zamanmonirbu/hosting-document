@@ -109,10 +109,10 @@ Edit the file and insert the following configuration to the config file
 ```bash
 server {
     listen 80;
-    server_name your-domain.com;
+    server_name api.xxx.com;
 
     location / {
-        proxy_pass http://localhost:applicationPort;
+        proxy_pass http://localhost:3001;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -173,4 +173,11 @@ Now, everything is okay now.
 
 Great Job...!
 
-# hosting-document
+
+# Restart any app
+pm2 restart app-name / all
+
+# Change port number of a app
+pm2 start npm --name "app-name1" -- start -- -p 3002
+
+
